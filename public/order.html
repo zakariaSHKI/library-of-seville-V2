@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Purchase books from Library of Seville.">
+  <title>Order Book | Library of Seville</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+  <script>
+    (function() {
+      try {
+        var theme = localStorage.getItem('los_theme');
+        if (!theme) {
+          var params = new URLSearchParams(window.location.search);
+          var qTheme = params.get('theme');
+          if (qTheme === 'dark' || qTheme === 'light') theme = qTheme;
+        }
+        if (!theme && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          theme = 'dark';
+        }
+        if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="output/images/logo.png" type="image/png">
+  <script src="i18n.js"></script>
+  <script src="theme.js"></script>
+</head>
+<body>
+  <header class="navbar" role="banner">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-brand" aria-label="Library of Seville Home">
+        <img src="output/images/logo.png" alt="Library of Seville" class="navbar-logo" width="48" height="48">
+      </a>
+      <nav class="navbar-menu" id="navbarMenu" role="navigation" aria-label="Main navigation">
+        <ul class="navbar-nav">
+          <li><a href="index.html" class="navbar-link" data-i18n="nav.home">Home</a></li>
+          <li><a href="books.html" class="navbar-link" data-i18n="nav.books">Books</a></li>
+          <li><a href="contact.html" class="navbar-link" data-i18n="nav.contact">Contact Us</a></li>
+        </ul>
+        <div class="navbar-actions">
+          <a href="books.html" class="btn btn-primary" data-i18n="nav.browseBooks">Browse Books</a>
+          <div class="lang-switch lang-switch-desktop" role="group" aria-label="Language selector">
+            <button type="button" class="lang-btn active" data-lang-btn="en" aria-label="English">EN</button>
+            <span class="lang-divider">|</span>
+            <button type="button" class="lang-btn" data-lang-btn="ar" aria-label="العربية">عربي</button>
+          </div>
+          <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+            <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+            </svg>
+            <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+      
+      <div class="navbar-mobile-controls">
+        <div class="lang-switch" role="group" aria-label="Language selector">
+          <button type="button" class="lang-btn active" data-lang-btn="en" aria-label="English">EN</button>
+          <span class="lang-divider">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="ar" aria-label="العربية">عربي</button>
+        </div>
+        <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+          </svg>
+          <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+          </svg>
+        </button>
+        <button class="navbar-toggle" id="navbarToggle" aria-expanded="false" aria-controls="navbarMenu" aria-label="Toggle navigation menu">
+          <span class="navbar-toggle-icon"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <div class="container">
+      <header class="books-header">
+        <h1 class="books-title" data-i18n="order.pageTitle">Place Your Order</h1>
+        <a href="books.html" class="btn btn-ghost" data-i18n="order.backBtn">← Back to Books</a>
+      </header>
+
+      <div class="contact-grid">
+        <div class="contact-form">
+          <h2 class="contact-form-title" data-i18n="order.formTitle">Shipping & Contact Information</h2>
+          <form id="orderForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="firstName" data-i18n="order.firstName">First Name *</label>
+                <input id="firstName" class="form-input" required data-i18n-ph="order.firstNamePh" placeholder="Your first name">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="lastName" data-i18n="order.lastName">Last Name *</label>
+                <input id="lastName" class="form-input" required data-i18n-ph="order.lastNamePh" placeholder="Your last name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone" data-i18n="order.phone">Phone Number *</label>
+              <input id="phone" type="tel" class="form-input" required data-i18n-ph="order.phonePh" placeholder="0555 12 34 56">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="wilaya" data-i18n="order.wilaya">Wilaya *</label>
+                <select id="wilaya" class="form-select" required>
+                  <option value="" data-i18n="order.wilayaSelect">Select a Wilaya</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="city" data-i18n="order.city">City *</label>
+                <input id="city" class="form-input" required data-i18n-ph="order.cityPh" placeholder="City / Municipality">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="address" data-i18n="order.address">Full Address *</label>
+              <textarea id="address" class="form-textarea" rows="3" required data-i18n-ph="order.addressPh" placeholder="Street, building, apartment..."></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="notes" data-i18n="order.notes">Order Notes (optional)</label>
+              <textarea id="notes" class="form-textarea" rows="3" data-i18n-ph="order.notesPh" placeholder="Delivery instructions..."></textarea>
+            </div>
+            <button class="btn btn-primary btn-lg btn-full" type="submit" data-i18n="order.placeOrderBtn">Place Order</button>
+            <p id="orderStatus" class="form-help" style="text-align:center; min-height:1.5em;" aria-live="polite"></p>
+          </form>
+        </div>
+
+        <div class="contact-info">
+          <h2 class="contact-info-title" data-i18n="order.summaryTitle">Order Summary</h2>
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="contact-method-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+              </div>
+              <div class="contact-method-content">
+                <span class="contact-method-label" data-i18n="order.bookLabel">Book</span>
+                <div class="contact-method-value" id="summaryBook">Loading...</div>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="contact-method-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
+              </div>
+              <div class="contact-method-content">
+                <span class="contact-method-label" data-i18n="order.qtyLabel">Quantity</span>
+                <input id="quantity" type="number" min="1" value="1" style="width:80px; padding:6px 10px; border:1px solid var(--color-border); border-radius:8px; margin-top:6px;">
+              </div>
+            </div>
+          </div>
+          <p style="margin-top:16px; color: var(--color-text-secondary); font-size:14px;" data-i18n="order.confirmNotice">After placing your order, we will contact you via phone/email to confirm availability and delivery details.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="output/images/logo.png" alt="Library of Seville" class="footer-logo" width="48" height="48">
+          <p class="footer-description" data-i18n="footer.brandDesc">
+            Library of Seville &mdash; Spreading knowledge and reading culture across Algeria, inspired by the heritage of Al-Andalus.
+          </p>
+        </div>
+        
+        <nav class="footer-nav" aria-label="Quick links">
+          <h3 class="footer-title" data-i18n="footer.quickLinks">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link" data-i18n="nav.home">Home</a></li>
+            <li><a href="books.html" class="footer-link" data-i18n="nav.books">Books</a></li>
+            <li><a href="contact.html" class="footer-link" data-i18n="nav.contact">Contact Us</a></li>
+          </ul>
+        </nav>
+        
+        <nav class="footer-nav" aria-label="Categories">
+          <h3 class="footer-title" data-i18n="footer.categories">Categories</h3>
+          <ul class="footer-links">
+            <li><a href="books.html?q=history" class="footer-link" data-i18n="footer.history">History</a></li>
+            <li><a href="books.html?q=philosophy" class="footer-link" data-i18n="footer.philosophy">Philosophy</a></li>
+            <li><a href="books.html?q=fantasy" class="footer-link" data-i18n="footer.fantasy">Fantasy</a></li>
+            <li><a href="books.html?q=economics" class="footer-link" data-i18n="footer.economics">Economics</a></li>
+          </ul>
+        </nav>
+        
+        <div class="footer-nav">
+          <h3 class="footer-title" data-i18n="footer.contact">Contact</h3>
+          <ul class="footer-links">
+            <li><a href="mailto:libraryseville@gmail.com" class="footer-link">libraryseville@gmail.com</a></li>
+            <li><a href="tel:+213780340530" class="footer-link">+213 780 34 05 30</a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=61590717625826&locale=fr_FR" class="footer-link" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://www.instagram.com/library_of_seville" class="footer-link" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@library_of_seville" class="footer-link" target="_blank" rel="noopener">TikTok</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="footer-copyright" data-i18n="footer.copyright">&copy; 2024 Library of Seville. All rights reserved.</p>
+        <div style="display: flex; gap: var(--space-6);">
+          <a href="#" class="footer-link" style="font-size: var(--font-size-sm);" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="#" class="footer-link" style="font-size: var(--font-size-sm);" data-i18n="footer.terms">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="nav.js"></script>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const bookId = params.get('bookId');
+    const rawBookTitle = params.get('bookTitle') || '';
+    const summaryBook = document.getElementById('summaryBook');
+
+    function updateBookTitle() {
+      if (bookId && window.getLocalizedBook) {
+        const localized = window.getLocalizedBook({ id: bookId, title: rawBookTitle });
+        summaryBook.textContent = localized.title || rawBookTitle || (window.t ? window.t('order.noBookSelected') : 'Please select a book from the books page');
+      } else if (rawBookTitle) {
+        summaryBook.textContent = rawBookTitle;
+      } else if (bookId) {
+        summaryBook.textContent = (window.t ? window.t('order.orderIdPrefix') : 'Book ID') + ': ' + bookId;
+      } else {
+        summaryBook.textContent = (window.t ? window.t('order.noBookSelected') : 'Please select a book from the books page');
+      }
+    }
+    updateBookTitle();
+    window.addEventListener('languageChanged', updateBookTitle);
+
+    const wilayas = [
+      { code: '01', nameEn: 'Adrar', nameAr: 'أدرار' },
+      { code: '02', nameEn: 'Chlef', nameAr: 'الشلف' },
+      { code: '03', nameEn: 'Laghouat', nameAr: 'الأغواط' },
+      { code: '04', nameEn: 'Oum El Bouaghi', nameAr: 'أم البواقي' },
+      { code: '05', nameEn: 'Batna', nameAr: 'باتنة' },
+      { code: '06', nameEn: 'Béjaïa', nameAr: 'بجاية' },
+      { code: '07', nameEn: 'Biskra', nameAr: 'بسكرة' },
+      { code: '08', nameEn: 'Béchar', nameAr: 'بشار' },
+      { code: '09', nameEn: 'Blida', nameAr: 'البليدة' },
+      { code: '10', nameEn: 'Bouira', nameAr: 'البويرة' },
+      { code: '11', nameEn: 'Tamanrasset', nameAr: 'تمنراست' },
+      { code: '12', nameEn: 'Tébessa', nameAr: 'تبسة' },
+      { code: '13', nameEn: 'Tlemcen', nameAr: 'تلمسان' },
+      { code: '14', nameEn: 'Tiaret', nameAr: 'تيارت' },
+      { code: '15', nameEn: 'Tizi Ouzou', nameAr: 'تيزي وزو' },
+      { code: '16', nameEn: 'Alger', nameAr: 'الجزائر' },
+      { code: '17', nameEn: 'Djelfa', nameAr: 'الجلفة' },
+      { code: '18', nameEn: 'Jijel', nameAr: 'جيجل' },
+      { code: '19', nameEn: 'Sétif', nameAr: 'سطيف' },
+      { code: '20', nameEn: 'Saïda', nameAr: 'سعيدة' },
+      { code: '21', nameEn: 'Skikda', nameAr: 'سكيكدة' },
+      { code: '22', nameEn: 'Sidi Bel Abbès', nameAr: 'سيدي بلعباس' },
+      { code: '23', nameEn: 'Annaba', nameAr: 'عنابة' },
+      { code: '24', nameEn: 'Guelma', nameAr: 'قالمة' },
+      { code: '25', nameEn: 'Constantine', nameAr: 'قسنطينة' },
+      { code: '26', nameEn: 'Médéa', nameAr: 'المدية' },
+      { code: '27', nameEn: 'Mostaganem', nameAr: 'مستغانم' },
+      { code: '28', nameEn: "M'Sila", nameAr: 'المسيلة' },
+      { code: '29', nameEn: 'Mascara', nameAr: 'معسكر' },
+      { code: '30', nameEn: 'Ouargla', nameAr: 'ورقلة' },
+      { code: '31', nameEn: 'Oran', nameAr: 'وهران' },
+      { code: '32', nameEn: 'El Bayadh', nameAr: 'البيض' },
+      { code: '33', nameEn: 'Illizi', nameAr: 'إليزي' },
+      { code: '34', nameEn: 'Bordj Bou Arreridj', nameAr: 'برج بوعريريج' },
+      { code: '35', nameEn: 'Boumerdès', nameAr: 'بومرداس' },
+      { code: '36', nameEn: 'El Tarf', nameAr: 'الطارف' },
+      { code: '37', nameEn: 'Tindouf', nameAr: 'تندوف' },
+      { code: '38', nameEn: 'Tissemsilt', nameAr: 'تيسمسيلت' },
+      { code: '39', nameEn: 'El Oued', nameAr: 'الوادي' },
+      { code: '40', nameEn: 'Khenchela', nameAr: 'خنشلة' },
+      { code: '41', nameEn: 'Souk Ahras', nameAr: 'سوق أهراس' },
+      { code: '42', nameEn: 'Tipaza', nameAr: 'تيبازة' },
+      { code: '43', nameEn: 'Mila', nameAr: 'ميلة' },
+      { code: '44', nameEn: 'Aïn Defla', nameAr: 'عين الدفلى' },
+      { code: '45', nameEn: 'Naâma', nameAr: 'النعامة' },
+      { code: '46', nameEn: 'Aïn Témouchent', nameAr: 'عين تموشنت' },
+      { code: '47', nameEn: 'Ghardaïa', nameAr: 'غرداية' },
+      { code: '48', nameEn: 'Relizane', nameAr: 'غليزان' },
+      { code: '49', nameEn: 'Timimoun', nameAr: 'تيميمون' },
+      { code: '50', nameEn: 'Bordj Badji Mokhtar', nameAr: 'برج باجي مختار' },
+      { code: '51', nameEn: 'Ouled Djellal', nameAr: 'أولاد جلال' },
+      { code: '52', nameEn: 'Béni Abbès', nameAr: 'بني عباس' },
+      { code: '53', nameEn: 'In Salah', nameAr: 'عين صالح' },
+      { code: '54', nameEn: 'In Guezzam', nameAr: 'عين قزام' },
+      { code: '55', nameEn: 'Touggourt', nameAr: 'تقرت' },
+      { code: '56', nameEn: 'Djanet', nameAr: 'جانت' },
+      { code: '57', nameEn: "El M'Ghair", nameAr: 'المغير' },
+      { code: '58', nameEn: 'El Meniaâ', nameAr: 'المنيعة' },
+      { code: '59', nameEn: 'Aflou', nameAr: 'آفلو' },
+      { code: '60', nameEn: 'Barika', nameAr: 'بريكة' },
+      { code: '61', nameEn: 'El Kantara', nameAr: 'القنطرة' },
+      { code: '62', nameEn: 'Bir El Ater', nameAr: 'بئر العاتر' },
+      { code: '63', nameEn: 'El Aricha', nameAr: 'العريشة' },
+      { code: '64', nameEn: 'Ksar Chellala', nameAr: 'قصر الشلالة' },
+      { code: '65', nameEn: 'Aïn Ouessara', nameAr: 'عين وسارة' },
+      { code: '66', nameEn: 'Messaad', nameAr: 'مسعد' },
+      { code: '67', nameEn: 'Ksar El Boukhari', nameAr: 'قصر البخاري' },
+      { code: '68', nameEn: 'Bou Saâda', nameAr: 'بوسعادة' },
+      { code: '69', nameEn: 'El Abiodh Sidi Cheikh', nameAr: 'الأبيض سيدي الشيخ' }
+    ];
+
+    const wilayaSelect = document.getElementById('wilaya');
+    function populateWilayas() {
+      if (!wilayaSelect) return;
+      const currentVal = wilayaSelect.value;
+      const isAr = (window.getCurrentLanguage && window.getCurrentLanguage() === 'ar');
+      const placeholderText = window.t ? window.t('order.wilayaSelect') : (isAr ? 'اختر الولاية' : 'Select a Wilaya');
+      
+      let html = `<option value="" disabled ${!currentVal ? 'selected' : ''}>${placeholderText}</option>`;
+      wilayas.forEach(w => {
+        const optionVal = `${w.code} - ${w.nameEn} (${w.nameAr})`;
+        const label = isAr ? `${w.code} - ${w.nameAr}` : `${w.code} - ${w.nameEn} (${w.nameAr})`;
+        const selected = (currentVal === optionVal || (currentVal && currentVal.startsWith(w.code + ' -'))) ? 'selected' : '';
+        html += `<option value="${optionVal}" ${selected}>${label}</option>`;
+      });
+      wilayaSelect.innerHTML = html;
+    }
+    populateWilayas();
+    window.addEventListener('languageChanged', populateWilayas);
+
+    const form = document.getElementById('orderForm');
+    const status = document.getElementById('orderStatus');
+    const btn = form.querySelector('button[type=submit]');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = '';
+      btn.disabled = true;
+      btn.textContent = (window.t ? window.t('order.placingOrderBtn') : 'Placing order...');
+      const payload = {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        phone: document.getElementById('phone').value,
+        address: document.getElementById('address').value,
+        city: document.getElementById('city').value,
+        wilaya: document.getElementById('wilaya').value,
+        bookId: bookId,
+        bookTitle: summaryBook.textContent || rawBookTitle,
+        quantity: document.getElementById('quantity').value,
+        notes: document.getElementById('notes').value
+      };
+      try {
+        const res = await fetch('/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Failed');
+        status.style.color = 'var(--color-success)';
+        const prefix = (window.t ? window.t('order.orderIdPrefix') : 'Order ID');
+        const successMsg = (window.t ? window.t('order.orderSuccess') : data.message);
+        status.textContent = successMsg + ' (' + prefix + ': ' + data.orderId.slice(0, 8) + ')';
+        form.reset();
+        populateWilayas();
+      } catch (err) {
+        status.style.color = 'var(--color-error)';
+        status.textContent = err.message;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = (window.t ? window.t('order.placeOrderBtn') : 'Place Order');
+      }
+    });
+  </script>
+</body>
+</html>

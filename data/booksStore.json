@@ -1,0 +1,65 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Rich Dad, Poor Dad",
+      "author": "Robert T. Kiyosaki",
+      "year": "1997",
+      "summary": "A personal finance classic on building wealth through financial literacy.",
+      "coverUrl": "/output/images/books/rich-dad-poor-dad.jpg",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "title": "The Art of War",
+      "author": "Sun Tzu",
+      "year": "5th century BC",
+      "summary": "A classic military treatise on strategy and tactics.",
+      "coverUrl": "/output/images/books/art-of-war.jpg",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "title": "Crime and Punishment",
+      "author": "Fyodor Dostoevsky",
+      "year": "1866",
+      "summary": "A deep dive into morality and existentialism.",
+      "coverUrl": "/output/images/books/crime-and-punishment.jpg",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "title": "Jurassic Park",
+      "author": "Michael Crichton",
+      "year": "1990",
+      "summary": "A science thriller about resurrected dinosaurs and the limits of technology.",
+      "coverUrl": "/output/images/books/jurassic-park.jpg",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "title": "1984",
+      "author": "George Orwell",
+      "year": "1949",
+      "summary": "A chilling dystopian narrative about totalitarianism.",
+      "coverUrl": "/output/images/books/1984.jpg",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "title": "The Muqaddimah",
+      "author": "Ibn Khaldun",
+      "year": "1406",
+      "summary": "A foundational text on sociology and historiography.",
+      "coverUrl": "/output/images/books/the-muqaddimah.jpg",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
+    }
+  ],
+  "nextId": 9
+}

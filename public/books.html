@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse our complete collection of books at Library of Seville. History, philosophy, fantasy, economics and more. Quality books at affordable prices with shipping across Algeria.">
+  <title>Books | Library of Seville</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Merriweather:wght@700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <script>
+    (function() {
+      try {
+        var theme = localStorage.getItem('los_theme');
+        if (!theme) {
+          var params = new URLSearchParams(window.location.search);
+          var qTheme = params.get('theme');
+          if (qTheme === 'dark' || qTheme === 'light') theme = qTheme;
+        }
+        if (!theme && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          theme = 'dark';
+        }
+        if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="output/images/logo.png" type="image/png">
+  <script src="i18n.js"></script>
+  <script src="theme.js"></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="navbar" role="banner">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-brand" aria-label="Library of Seville Home">
+        <img src="output/images/logo.png" alt="Library of Seville" class="navbar-logo" width="48" height="48">
+      </a>
+      
+      <nav class="navbar-menu" id="navbarMenu" role="navigation" aria-label="Main navigation">
+        <ul class="navbar-nav">
+          <li><a href="index.html" class="navbar-link" data-i18n="nav.home">Home</a></li>
+          <li><a href="books.html" class="navbar-link active" aria-current="page" data-i18n="nav.books">Books</a></li>
+          <li><a href="contact.html" class="navbar-link" data-i18n="nav.contact">Contact Us</a></li>
+        </ul>
+        <div class="navbar-actions">
+          <a href="contact.html" class="btn btn-primary" data-i18n="nav.contact">Contact Us</a>
+          <div class="lang-switch lang-switch-desktop" role="group" aria-label="Language selector">
+            <button type="button" class="lang-btn active" data-lang-btn="en" aria-label="English">EN</button>
+            <span class="lang-divider">|</span>
+            <button type="button" class="lang-btn" data-lang-btn="ar" aria-label="العربية">عربي</button>
+          </div>
+          <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+            <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+            </svg>
+            <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+      
+      <div class="navbar-mobile-controls">
+        <div class="lang-switch" role="group" aria-label="Language selector">
+          <button type="button" class="lang-btn active" data-lang-btn="en" aria-label="English">EN</button>
+          <span class="lang-divider">|</span>
+          <button type="button" class="lang-btn" data-lang-btn="ar" aria-label="العربية">عربي</button>
+        </div>
+        <button type="button" class="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+          </svg>
+          <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+          </svg>
+        </button>
+        <button class="navbar-toggle" id="navbarToggle" aria-expanded="false" aria-controls="navbarMenu" aria-label="Toggle navigation menu" data-i18n-aria="nav.toggleMenu">
+          <span class="navbar-toggle-icon"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-title" data-i18n="books.pageTitle">Our Collection</h1>
+      <p class="page-description" data-i18n="books.pageDesc">Discover carefully curated books across diverse genres. Every title selected for quality and impact.</p>
+    </div>
+  </div>
+
+  <!-- Books Grid -->
+  <main id="main" role="main">
+    <section class="page-content books-section" aria-labelledby="books-title">
+      <div class="container">
+        <header class="books-header">
+          <h2 id="books-title" class="books-title" data-i18n="books.allBooksTitle">All Books</h2>
+          <form class="search-form" role="search" aria-label="Search books" id="searchForm">
+            <div class="search-input-wrapper">
+              <svg class="search-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+              </svg>
+              <input type="search" class="search-input" id="bookSearch" placeholder="Search for a book..." aria-label="Search books" autocomplete="off" data-i18n-ph="books.searchPlaceholder">
+            </div>
+          </form>
+        </header>
+        
+        <div class="books-grid" id="booksGrid" role="list" aria-label="Book collection">
+          <article class="book-card animate-fade-in-up" role="listitem" data-title="Rich Dad Poor Dad">
+            <a href="order.html?bookId=1&bookTitle=Rich%20Dad%2C%20Poor%20Dad" class="book-card-link" aria-label="View details for Rich Dad Poor Dad by Robert Kiyosaki">
+              <div class="book-cover-wrapper">
+                <img src="output/images/books/rich-dad-poor-dad.jpg" alt="" class="book-cover" loading="lazy" width="210" height="300">
+              </div>
+              <h3 class="book-title">Rich Dad, Poor Dad</h3>
+            </a>
+            <div style="margin-top:8px; text-align:center;">
+              <a href="order.html?bookId=1&bookTitle=Rich%20Dad%2C%20Poor%20Dad" class="btn btn-primary btn-sm" data-i18n="common.buyNow">Buy Now</a>
+            </div>
+          </article>
+          
+          <article class="book-card animate-fade-in-up delay-1" role="listitem" data-title="The Art of War">
+            <a href="order.html?bookId=2&bookTitle=The%20Art%20of%20War" class="book-card-link" aria-label="View details for The Art of War by Sun Tzu">
+              <div class="book-cover-wrapper">
+                <img src="output/images/books/art-of-war.jpg" alt="" class="book-cover" loading="lazy" width="210" height="300">
+              </div>
+              <h3 class="book-title">The Art of War</h3>
+            </a>
+            <div style="margin-top:8px; text-align:center;">
+              <a href="order.html?bookId=2&bookTitle=The%20Art%20of%20War" class="btn btn-primary btn-sm" data-i18n="common.buyNow">Buy Now</a>
+            </div>
+          </article>
+          
+          <article class="book-card animate-fade-in-up delay-2" role="listitem" data-title="Crime and Punishment">
+            <a href="order.html?bookId=3&bookTitle=Crime%20and%20Punishment" class="book-card-link" aria-label="View details for Crime and Punishment by Fyodor Dostoevsky">
+              <div class="book-cover-wrapper">
+                <img src="output/images/books/crime-and-punishment.jpg" alt="" class="book-cover" loading="lazy" width="210" height="300">
+              </div>
+              <h3 class="book-title">Crime and Punishment</h3>
+            </a>
+            <div style="margin-top:8px; text-align:center;">
+              <a href="order.html?bookId=3&bookTitle=Crime%20and%20Punishment" class="btn btn-primary btn-sm" data-i18n="common.buyNow">Buy Now</a>
+            </div>
+          </article>
+          
+          <article class="book-card animate-fade-in-up delay-3" role="listitem" data-title="Jurassic Park">
+            <a href="order.html?bookId=4&bookTitle=Jurassic%20Park" class="book-card-link" aria-label="View details for Jurassic Park by Michael Crichton">
+              <div class="book-cover-wrapper">
+                <img src="output/images/books/jurassic-park.jpg" alt="" class="book-cover" loading="lazy" width="210" height="300">
+              </div>
+              <h3 class="book-title">Jurassic Park</h3>
+            </a>
+            <div style="margin-top:8px; text-align:center;">
+              <a href="order.html?bookId=4&bookTitle=Jurassic%20Park" class="btn btn-primary btn-sm" data-i18n="common.buyNow">Buy Now</a>
+            </div>
+          </article>
+          
+          <article class="book-card animate-fade-in-up delay-4" role="listitem" data-title="1984">
+            <a href="order.html?bookId=5&bookTitle=1984" class="book-card-link" aria-label="View details for 1984 by George Orwell">
+              <div class="book-cover-wrapper">
+                <img src="output/images/books/1984.jpg" alt="" class="book-cover" loading="lazy" width="210" height="300">
+              </div>
+              <h3 class="book-title">1984</h3>
+            </a>
+            <div style="margin-top:8px; text-align:center;">
+              <a href="order.html?bookId=5&bookTitle=1984" class="btn btn-primary btn-sm" data-i18n="common.buyNow">Buy Now</a>
+            </div>
+          </article>
+          
+          <article class="book-card animate-fade-in-up delay-5" role="listitem" data-title="The Muqaddimah">
+            <a href="order.html?bookId=6&bookTitle=The%20Muqaddimah" class="book-card-link" aria-label="View details for The Muqaddimah by Ibn Khaldun">
+              <div class="book-cover-wrapper">
+                <img src="output/images/books/the-muqaddimah.jpg" alt="" class="book-cover" loading="lazy" width="210" height="300">
+              </div>
+              <h3 class="book-title">The Muqaddimah</h3>
+            </a>
+            <div style="margin-top:8px; text-align:center;">
+              <a href="order.html?bookId=6&bookTitle=The%20Muqaddimah" class="btn btn-primary btn-sm" data-i18n="common.buyNow">Buy Now</a>
+            </div>
+          </article>
+        </div>
+        
+        <!-- No results message -->
+        <div id="noResults" class="no-results" style="display: none; text-align: center; padding: var(--space-16) 0; grid-column: 1 / -1;">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="width: 64px; height: 64px; margin: 0 auto var(--space-4); color: var(--color-text-muted);" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12c0 1.408-.856 2.65-2.123 3.111" />
+          </svg>
+          <h3 style="font-family: var(--font-family-heading); font-size: var(--font-size-xl); color: var(--color-text); margin-bottom: var(--space-2);" data-i18n="books.noBooksTitle">No books found</h3>
+          <p style="color: var(--color-text-secondary);" data-i18n="books.noBooksDesc">Try adjusting your search terms</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="output/images/logo.png" alt="Library of Seville" class="footer-logo" width="48" height="48">
+          <p class="footer-description" data-i18n="footer.brandDesc">
+            Library of Seville &mdash; Spreading knowledge and reading culture across Algeria, inspired by the heritage of Al-Andalus.
+          </p>
+        </div>
+        
+        <nav class="footer-nav" aria-label="Quick links">
+          <h3 class="footer-title" data-i18n="footer.quickLinks">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link" data-i18n="nav.home">Home</a></li>
+            <li><a href="books.html" class="footer-link" data-i18n="nav.books">Books</a></li>
+            <li><a href="contact.html" class="footer-link" data-i18n="nav.contact">Contact Us</a></li>
+          </ul>
+        </nav>
+        
+        <nav class="footer-nav" aria-label="Categories">
+          <h3 class="footer-title" data-i18n="footer.categories">Categories</h3>
+          <ul class="footer-links">
+            <li><a href="books.html?q=history" class="footer-link" data-i18n="footer.history">History</a></li>
+            <li><a href="books.html?q=philosophy" class="footer-link" data-i18n="footer.philosophy">Philosophy</a></li>
+            <li><a href="books.html?q=fantasy" class="footer-link" data-i18n="footer.fantasy">Fantasy</a></li>
+            <li><a href="books.html?q=economics" class="footer-link" data-i18n="footer.economics">Economics</a></li>
+          </ul>
+        </nav>
+        
+        <div class="footer-nav">
+          <h3 class="footer-title" data-i18n="footer.contact">Contact</h3>
+          <ul class="footer-links">
+            <li><a href="mailto:libraryseville@gmail.com" class="footer-link">libraryseville@gmail.com</a></li>
+            <li><a href="tel:+213780340530" class="footer-link">+213 780 34 05 30</a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=61590717625826&locale=fr_FR" class="footer-link" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://www.instagram.com/library_of_seville" class="footer-link" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@library_of_seville" class="footer-link" target="_blank" rel="noopener">TikTok</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="footer-copyright" data-i18n="footer.copyright">&copy; 2024 Library of Seville. All rights reserved.</p>
+        <div style="display: flex; gap: var(--space-6);">
+          <a href="#" class="footer-link" style="font-size: var(--font-size-sm);" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="#" class="footer-link" style="font-size: var(--font-size-sm);" data-i18n="footer.terms">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="nav.js"></script>
+  <script>
+    // ===== Book listing: load from API =====
+    const booksGrid = document.getElementById('booksGrid');
+    const searchForm = document.getElementById('searchForm');
+    const searchInput = document.getElementById('bookSearch');
+    const noResults = document.getElementById('noResults');
+
+    let allBooks = [];
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function renderBooks(books) {
+      if (!booksGrid) return;
+
+      if (!books.length) {
+        booksGrid.innerHTML = '';
+        if (noResults) noResults.style.display = 'block';
+        return;
+      }
+
+      if (noResults) noResults.style.display = 'none';
+
+      const buyNowText = (window.t ? window.t('common.buyNow') : 'Buy Now');
+
+      booksGrid.innerHTML = books.map((book, i) => {
+        const localized = (window.getLocalizedBook ? window.getLocalizedBook(book) : book);
+        const title = escapeHtml(localized.title);
+        const author = escapeHtml(localized.author);
+        const cover = escapeHtml(book.coverUrl);
+        const delay = Math.min(i + 1, 5);
+        const orderUrl = `order.html?bookId=${book.id}&bookTitle=${encodeURIComponent(localized.title)}`;
+        return `
+          <article class="book-card animate-fade-in-up delay-${delay}" role="listitem">
+            <a href="${orderUrl}" class="book-card-link" aria-label="Order ${title} by ${author}">
+              <div class="book-cover-wrapper">
+                <img src="${cover}" alt="Cover of ${title}" class="book-cover" loading="lazy" width="210" height="300">
+              </div>
+              <h3 class="book-title">${title}</h3>
+            </a>
+            <div style="margin-top:8px; text-align:center;">
+              <a href="${orderUrl}" class="btn btn-primary btn-sm">${buyNowText}</a>
+            </div>
+          </article>`;
+      }).join('');
+    }
+
+    function filterBooks(query) {
+      const q = (query || '').trim().toLowerCase();
+
+      // If the API was unavailable, filter the static fallback cards in the DOM
+      if (!allBooks.length) {
+        const cards = booksGrid ? booksGrid.querySelectorAll('.book-card') : [];
+        let visible = 0;
+        cards.forEach((card) => {
+          const title = (card.dataset.title || card.querySelector('.book-title')?.textContent || '').toLowerCase();
+          const show = !q || title.includes(q);
+          card.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+        if (noResults) noResults.style.display = visible ? 'none' : 'block';
+        return;
+      }
+
+      if (!q) return renderBooks(allBooks);
+
+      const filtered = allBooks.filter(book => {
+        const loc = (window.getLocalizedBook ? window.getLocalizedBook(book) : book);
+        return String(book.title).toLowerCase().includes(q) ||
+               String(book.author).toLowerCase().includes(q) ||
+               String(loc.title).toLowerCase().includes(q) ||
+               String(loc.author).toLowerCase().includes(q);
+      });
+      renderBooks(filtered);
+    }
+
+    async function loadBooks() {
+      if (!booksGrid) return;
+
+      try {
+        const res = await fetch('/api/books');
+        if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+        allBooks = await res.json();
+
+        // Pre-fill search from the URL (?q=...) coming from the home page
+        const params = new URLSearchParams(window.location.search);
+        const initialQuery = params.get('q') || '';
+        if (searchInput && initialQuery) searchInput.value = initialQuery;
+
+        renderBooks(allBooks);
+        if (initialQuery) filterBooks(initialQuery);
+      } catch (err) {
+        // Keep the static fallback cards already in the page if the API is unavailable
+        console.error('Could not load books from API:', err);
+      }
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => filterBooks(e.target.value));
+    }
+
+    // Prevent pressing Enter from reloading the page
+    if (searchForm) {
+      searchForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        filterBooks(searchInput ? searchInput.value : '');
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', loadBooks);
+    window.addEventListener('languageChanged', () => {
+      filterBooks(searchInput ? searchInput.value : '');
+    });
+  </script>
+</body>
+</html>
